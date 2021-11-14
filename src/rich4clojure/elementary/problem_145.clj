@@ -17,7 +17,7 @@
 (def __ :tests-will-fail)
 
 (comment
-  
+  (partition 2 (range 20))
   )
 
 (tests

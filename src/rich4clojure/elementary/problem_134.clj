@@ -13,13 +13,23 @@
 (def __ :tests-will-fail)
 
 (comment
-  
+  (#(nil? (%1 %2)) :a {:a nil :b 2})
+
+  (contains? {:a nil} :a)
+  ;; => true
+  (fn f [key map] (or (contains? map key) (key map)))
+  (f :c {:a nil :b 2})
+  ;; => nil
+
+  (f :b {:a nil :b 2})
+  ;; => true
+
   )
 
 (tests
-  (__ :a {:a nil :b 2}) :=
-  (__ :b {:a nil :b 2}) :=
-  (__ :c {:a nil :b 2}) :=)
+  ((fn f [key map] (or (contains? map key) (key map))) :a {:a nil :b 2}) :=
+  ((fn f [key map] (or (contains? map key) (key map))) :b {:a nil :b 2}) :=
+  ((fn f [key map] (or (contains? map key) (key map))) :c {:a nil :b 2}) :=)
 
 ;; Share your solution, and/or check how others did it:
 ;; https://gist.github.com/70ba70e1e4e0f249a90bc99bda5f8aff
