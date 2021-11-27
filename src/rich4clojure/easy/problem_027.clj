@@ -12,10 +12,10 @@
 ;; 
 ;; Hint: "racecar" does not equal '(\r \a \c \e \c \a \r)
 
-(def __ :tests-will-fail)
+(def __ #(= % (apply str (reverse %))))
 
 (comment
-  
+   (apply str (reverse "racecar"))
   )
 
 (tests
